@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>image carousel</title>
+	<!-- <script type="text/javascript">
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+          items : 4,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [979,3]
+      });
+    });
+	</script>
+	<style type="text/css">
+    #owl-demo .item{
+      margin: 3px;
+    }
+    #owl-demo .item img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+	</style> -->
+
+	<script type="text/javascript">
+		function imageSlider(){
+  this.prev = function(){
+    if(--this.index < 0) this.index = this.imagesArray.length - 1;
+    this.start()
+  };
+
+  this.next = function(){
+    if(++this.index >= this.imagesArray.length) this.index = 0;
+    this.start()
+  };
+
+  this.start = function(){
+    var getImagePath = document.getElementById("mainImage");
+    getImagePath.setAttribute("src", this.imagesArray[this.index]);
+
+    this.timeout && clearTimeout(this.timeout);
+    this.timeout = setTimeout(this.next.bind(this),3000)	
+  };
+}
+
+var myCarousel = new imageSlider();
+myCarousel.imagesArray = ["http://i.stack.imgur.com/d5vO7.jpg?s=128&g=1", "http://i.stack.imgur.com/GNgxX.png?s=128&g=1","http://i.stack.imgur.com/kpQYd.png?s=128&g=1"];
+myCarousel.index = 0;
+myCarousel.start()
+	</script>
+</head>
+<body>
+    <!-- <div id="owl-demo">   
+      <div class="item"><img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Owl Image"></div>
+      <div class="item"><img src="https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+       <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+        <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+         <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+          <div class="item"><img src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg" alt="Owl Image"></div>
+    </div> -->
+
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-6 float">
+      <img src="img/slider1.jpg" class="img-responsive" id="mainImage">
+      <p><button onclick="myCarousel.prev()">Prev</button>
+      <button onclick="myCarousel.next()">Next</button></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
